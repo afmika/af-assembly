@@ -3,7 +3,7 @@ af-Assembly is a very basic 1-stack machine with 3 general purpose registers tha
 
 # CLI
 ```bash
-node af-asm.js my_code.asm [--help]
+node af-asm.js my_code.asm [--debug]
 ```
 # Basic syntax
 ## Operators
