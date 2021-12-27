@@ -44,7 +44,7 @@ function run (code, debug = false) {
         if (row.trim() == '') continue;
         row = row.split(';')[0]; // remove comments
         if (row == '') continue; // comment only
-        row = row.replace(/[\t\r]+/g, ''); // remove indents
+        row = row.replace(/^[ \t\r]+/g, ''); // remove indents
         
         code_regx.test(row);
         let [instr, value] = [RegExp.$1, RegExp.$2].map(
@@ -124,11 +124,11 @@ function run (code, debug = false) {
                 if (dont_skip) {
                     i = goto_map[value];
                     if (i == undefined)
-                        throw 'Error : Label ' + value + ' doesnt exist';
+                        throw 'Error : Label <' + value + '> doesnt exist';
                 }
                 break;
             default:
-                throw 'Error : Unrecognized instruction ' + instr;
+                throw 'Error : Unrecognized instruction <' + instr + '>';
         }
         if (debug) {
             showState (instr, value);
