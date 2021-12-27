@@ -3,15 +3,18 @@ af-Assembly is a very basic 1-stack machine with 3 general purpose registers tha
 
 # CLI
 ```bash
-node af-asm.js my_code.asm [--debug]
+node af-asm my_code.asm [--debug]
+node af-asm examples/fibo.asm
+node af-asm examples/fibo.asm --debug
 ```
+
 # Basic syntax
 ## Operators
 1. `push [64bit integer|rx|ry|rz]`
   - Push a register value or an integer value to the top of the stack
 3. `pop [rx|ry|rz]`
   - Pop at the top of the stack, if a register name is not given then this instruction is equivalent to `pop rx` then `pop ry`
-3. Binary operators : `add`, `sub`, bitwise `and`, bitwise `or`, bitwise `xor`
+3. Binary operators : `add`, `sub`, bitwise `and`, bitwise `or`, left/right shift `bitl`/`bitr` 
   - Use Y and X registers as inputs
 4. Unary operators : bitwise `not`, print as a 64 bit number `print`, print as an ASCII char `pchar`
   - Use the value at the top of the stack as an input

@@ -101,6 +101,12 @@ function run (code, debug = false) {
                 const n = stack.pop();
                 stack.push(~n);
                 break;
+            case 'bitr':
+                stack.push(reg.Y >> reg.X);
+                break;
+            case 'bitl':
+                stack.push(reg.Y << reg.X);
+                break;
             case 'print':
                 if (top_stack == undefined)
                     throw 'Error : Stack empty, unable to print';
